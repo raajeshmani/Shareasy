@@ -27,10 +27,11 @@ class HomePage extends StatelessWidget {
 //                top: MediaQuery.of(context).size.height * 0.13,
 //                left: MediaQuery.of(context).size.width * 0.35,
               Padding(
-                padding: const EdgeInsets.only(left: 32.0, right: 32.0),
+                padding: const EdgeInsets.only(left: 32.0, right: 32.0,top: 100.0),
+              // Container(
+              //   alignment: Alignment(-0.2,0.0),
+              //   margin: EdgeInsets.all(32.0),
                 child: Center(
-                  heightFactor: 2,
-                  widthFactor: 4,
                   child: Card(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -66,7 +67,8 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             IconButton(
-                              onPressed: () => Navigator.pushNamed(context, '/SpacePage'),
+                              onPressed: () =>
+                                  Navigator.pushNamed(context, '/SpacePage'),
                               icon: Icon(Ui.sendIcon),
                             ),
                           ],
@@ -74,13 +76,40 @@ class HomePage extends StatelessWidget {
                         SizedBox(height: 100.0),
                       ],
                     ),
-                    elevation: 12.0,
+                    elevation: Ui.cardElevation,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
                   ),
                 ),
               ),
-//              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 32.0, right: 32.0,top: 500.0),
+                child: Center(
+                  child: Card(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 50,),
+                        ListTile(
+                          title: Text(
+                            'Hash',
+                            style: Ui.titleStyle,
+                            textAlign: TextAlign.center,
+                          ),
+                          subtitle: Text(
+                                'This Feature is under Development',
+                                style: Ui.welcomeMessageStyle,
+                                textAlign: TextAlign.center,
+                              ),
+                        ),
+                        SizedBox(height: 50,),
+                      ],
+                    ),
+                    elevation: Ui.cardElevation,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                  ),
+                ),
+              ),
             ],
           ),
         ],

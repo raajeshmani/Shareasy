@@ -25,9 +25,11 @@ class Ui {
   static final pasteIcon = FontAwesomeIcons.paste;
   static final sendIcon = Icons.send;
 
+  static final double cardElevation = 4.0;
+
   static final hintText = "Type a message here";
   static final title = 'SharEasy';
-  static final TextStyle titleStyle = TextStyle(fontWeight: FontWeight.w700,fontSize: 22.0,color: dividerColor);
+  static final TextStyle titleStyle = TextStyle(fontWeight: FontWeight.w700,fontSize: 24.0,color: dividerColor);
   static final welcomeMessage = 'Welcome to SharEasy, Create a space for yourself';
   static final TextStyle welcomeMessageStyle = TextStyle(fontSize: 14.0,);
   static final TextStyle hintStyle = TextStyle(fontWeight: FontWeight.w300,fontSize: 14.0);
@@ -51,6 +53,17 @@ class Ui {
     Color(0xffb462ff),
     Color(0xffa46cff),
     Color(0xff8780ff),
+  ];
+
+  static final buttonGradient = [
+    Colors.cyan.shade400,
+		Colors.blue.shade600,
+  ];
+
+  static final buttonGradient2 = [
+    Color(0x9fb462ff),
+    Color(0x9fa46cff),
+    Color(0x9f8780ff),
   ];
 }
 
