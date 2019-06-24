@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shareasy/pages/home_page.dart';
-import 'package:shareasy/pages/test_page.dart';
 import './pages/space_page.dart';
 import './theme_data.dart';
 import 'package:flutter/rendering.dart';
@@ -14,7 +13,6 @@ class SharEasy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //  debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: themeData,
       home: HomePage(),
