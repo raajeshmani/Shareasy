@@ -20,20 +20,23 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^8.4.0
-  timeago: ^2.0.16
-  firebase_core: ^0.4.0+5
-
   cloud_firestore: ^0.12.5
+  flutter_barcode_scanner: ^0.0.9
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
+  # flutter_launcher_icons: ^0.7.2
   flutter_test:
     sdk: flutter
 
 
+flutter_icons:
+  image_path: "icon/dartBird.png"
+  android: true
+  ios: true
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -54,16 +57,6 @@ flutter:
           weight: 400
         - asset: assets/fonts/GoogleSans-Regular.ttf
           weight: 300
-    - family: Merriweather
-      fonts:
-        - asset: assets/fonts/Merriweather-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Merriweather-Regular.ttf
-          weight: 300
-        - asset: assets/fonts/Merriweather-Black.ttf
-          weight: 400
-        - asset: assets/fonts/Merriweather-Bold.ttf
-          weight: 600
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

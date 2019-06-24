@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import './space_page.dart';
+import '../tools/space_data.dart';
 import '../theme_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class HomePage extends StatelessWidget {
 //  CollectionReference get data => Firestore.instance.collection('data');
+  TextEditingController _coordinatesController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -27,10 +31,11 @@ class HomePage extends StatelessWidget {
 //                top: MediaQuery.of(context).size.height * 0.13,
 //                left: MediaQuery.of(context).size.width * 0.35,
               Padding(
-                padding: const EdgeInsets.only(left: 32.0, right: 32.0,top: 100.0),
-              // Container(
-              //   alignment: Alignment(-0.2,0.0),
-              //   margin: EdgeInsets.all(32.0),
+                padding:
+                    const EdgeInsets.only(left: 32.0, right: 32.0, top: 100.0),
+                // Container(
+                //   alignment: Alignment(-0.2,0.0),
+                //   margin: EdgeInsets.all(32.0),
                 child: Center(
                   child: Card(
                     child: Column(
@@ -54,26 +59,54 @@ class HomePage extends StatelessWidget {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            Container(
-                              width: 270,
-                              child: TextField(
-                                style: TextStyle(),
-                                textAlign: TextAlign.center,
-                                decoration: InputDecoration(
-                                  labelText: 'Your Space ',
-                                  hintText: 'Destination Unknown . . . ',
-                                  icon: Icon(Icons.link),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20.0),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                child: TextField(
+                                  style: TextStyle(),
+                                  controller: _coordinatesController,
+                                  cursorColor: Colors.black,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    labelText: 'Provide your Space Coordinates',
+                                    // labelStyle: Ui.labelStyle,
+                                    hintText: 'Destination Unknown . . . ',
+                                    // icon: Icon(Icons.link),
+                                  ),
                                 ),
                               ),
                             ),
                             IconButton(
-                              onPressed: () =>
-                                  Navigator.pushNamed(context, '/SpacePage'),
-                              icon: Icon(Ui.sendIcon),
+                              onPressed: () {
+                                SpaceData.coordinates =
+                                    _coordinatesController.text;
+                                _onTravelPressed(context);
+                              },
+                              icon: Icon(
+                                Ui.sendIcon,
+                                color: Ui.purpleButtonColor,
+                              ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 100.0),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            String scanResult =
+                                await FlutterBarcodeScanner.scanBarcode(
+                                    '#5BB974', Ui.cancelText, false);
+                            SpaceData.coordinates = scanResult;
+                            _onTravelPressed(context);
+                          },
+                          icon: Icon(
+                            Ui.qrIcon,
+                            color: Ui.purpleButtonColor,
+                          ),
+                        ),
+                        SizedBox(height: 60.0),
                       ],
                     ),
                     elevation: Ui.cardElevation,
@@ -83,12 +116,15 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 32.0, right: 32.0,top: 500.0),
+                padding:
+                    const EdgeInsets.only(left: 32.0, right: 32.0, top: 500.0),
                 child: Center(
                   child: Card(
                     child: Column(
                       children: <Widget>[
-                        SizedBox(height: 50,),
+                        SizedBox(
+                          height: 50,
+                        ),
                         ListTile(
                           title: Text(
                             'Hash',
@@ -96,12 +132,14 @@ class HomePage extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           subtitle: Text(
-                                'This Feature is under Development',
-                                style: Ui.welcomeMessageStyle,
-                                textAlign: TextAlign.center,
-                              ),
+                            'This Feature is under Development',
+                            style: Ui.welcomeMessageStyle,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
-                        SizedBox(height: 50,),
+                        SizedBox(
+                          height: 50,
+                        ),
                       ],
                     ),
                     elevation: Ui.cardElevation,
@@ -115,5 +153,28 @@ class HomePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _onTravelPressed(BuildContext context) {
+    DocumentReference documentReference =
+        Firestore.instance.collection('data').document(SpaceData.coordinates);
+    _coordinatesController.clear();
+    Navigator.pushNamed(context, '/SpacePage');
+    // StreamSubscription<DocumentSnapshot> subscription =
+    //     documentReference.snapshots().listen((datasnapshot) {
+    //   if (datasnapshot.exists) {
+    //     print('Exists');
+    //     _coordinatesController.clear();
+    //     Navigator.pushNamed(context, '/SpacePage');
+    //   } else {
+    //     print('Not');
+    //     _coordinatesController.clear();
+    //     documentReference.collection('planets').add(<String, dynamic>{
+    //       'message': Ui.welcomeDocumentMessage,
+    //       'date': DateTime.now(),
+    //     });
+    //     Navigator.pushNamed(context, '/SpacePage');
+    //   }
+    // });
   }
 }
