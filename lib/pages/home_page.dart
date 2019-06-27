@@ -93,7 +93,7 @@ class HomePage extends StatelessWidget {
                         SizedBox(
                           height: 10.0,
                         ),
-                        IconButton(
+                        FlatButton.icon(
                           onPressed: () async {
                             String scanResult =
                                 await FlutterBarcodeScanner.scanBarcode(
@@ -101,10 +101,20 @@ class HomePage extends StatelessWidget {
                             SpaceData.coordinates = scanResult;
                             _onTravelPressed(context);
                           },
+                          label: Text('Scan QR', style: Ui.buttonTextStyle),
                           icon: Icon(
-                            Ui.qrIcon,
-                            color: Ui.purpleButtonColor,
-                          ),
+                                Ui.qrIcon,
+                                color: Ui.purpleButtonColor,
+                              ),
+                          // child: Row(
+                          //   children: <Widget>[
+                          //     Icon(
+                          //       Ui.qrIcon,
+                          //       color: Ui.purpleButtonColor,
+                          //     ),
+                          //     Text('Scan QR', style: Ui.buttonTextStyle,),
+                          //   ],
+                          // ),
                         ),
                         SizedBox(height: 60.0),
                       ],
