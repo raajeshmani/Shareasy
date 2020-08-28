@@ -1,22 +1,26 @@
-# shareasy
+# Shareasy
 
-The Original SharEasy
+***One tap away space to display all your thoughts for every idea***
 
-## Getting Started
+## Features
+- QR Code scan your ideas
+- One tap to copy
+- One tap to paste
+- Supports pagination
+- Smooth scroll
+- Hash store - To store all the hashes to your unique ideas
+<br>
 
-This project is a starting point for a Flutter application.
+## Shareasy in GiFs
 
-A few resources to get you started if this is your first Flutter project:
+<p float="left">
+  <img src="https://drive.google.com/uc?export=view&id=1xS10mBYPkSuCBpnxfsfGy1qM_PbhkUwQ"  height="680em" />
+  <img src="https://drive.google.com/uc?export=view&id=1__ruCldqYoVy7WZc5N8Jxsw17_EUVIGc"  height="680em" />
+    
+</p>
+<br>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-
-## Custom Changes Made
+## Custom changes made to Flutter src 
 
 Changes made to bottom_sheet.dart in Original Flutter Package for text_input_sheet to coerce with keyboard input
 
